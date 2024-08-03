@@ -20,8 +20,39 @@ function App() {
 
     const data = await apiResponse.json();
     setResponse(data.response);
+    
+    return (
+      <div className="App">
+        <div>
+          <textarea
+            onChange={(e) => setIngredients(e.target.value)}
+            placeholder='Paste the ingredients list'
+            cols={90}
+            rows={10}
+          />
+        </div>
+        <div>
+          <textarea
+            onChange={(e) => setSkinConcerns(e.target.value)}
+            placeholder='Describe your skin concerns'
+            cols={90}
+            rows={10}
+          />
+        </div>
+        <div>
+          <button onClick={callBackendAPI}>Analyze this product</button>
+          {response !== "" ?
+            <div>
+              <h3>AI Response:</h3>
+              <p>{response}</p>
+            </div>  
+            :
+            null
+          }
+        </div>
+      </div>
+    );
   }
-
 }
 
 export default App;
