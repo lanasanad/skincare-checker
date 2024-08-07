@@ -21,7 +21,7 @@ app.post('/api/analyze', async (req, res) => {
       messages: [
         {
           "role": "system",
-          "content": "You will be provided with the ingredients of a skincare product, the product type, and the skin concerns it aims to address. Your task is to provide short points about 3 of the highlight ingredients. End it with a rating out of 10 on how much you reccomend it.Don't exceed 50 words. I want each ingredient point to start off like this: INGREDIENT - explanation. Each ingredient must be in a NEW line with space in between each ingredient. Then on a NEW line, include to reccomendation " 
+          "content": "You will be provided with the ingredients of a skincare product, the product type, and the skin concerns it aims to address. Provide short points about 3 of the highlight ingredients. End it with a rating out of 10 on how much you reccomend it.Don't exceed 50 words. I want each ingredient point to start off like this: INGREDIENT - explanation. Each ingredient must be in a NEW line with space in between each ingredient. Then on a NEW line, include to reccomendation " 
         },
         {
           "role": "user",
