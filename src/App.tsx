@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { TextField, Box, Autocomplete, Button, Typography, Container, CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions, createTheme, Rating, ThemeProvider} from '@mui/material';
 import './App.css';
 import StarIcon from '@mui/icons-material/Star';
-import backgroundImage from './assets/spill1.jpg'; // Correct import for assets folder
+import backgroundImage from './assets/spill1.jpg'; 
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#D8BFD8', // Light purple
-      dark: '#C8A2C8', // Darker purple for hover
+      main: '#D8BFD8', 
+      dark: '#C8A2C8', 
     },
   },
 });
@@ -47,13 +47,13 @@ function App() {
   
       const data = await apiResponse.json();
       setResponse(data.response);
-      setRating(data.rating); // Set the rating from the API response
+      setRating(data.rating); // rating from the API response
     } catch (error) {
       console.error('Error:', error);
       setResponse("An error occurred while analyzing.");
     } finally {
       setIsLoading(false);
-      setIsModalOpen(true); // Open the dialog after the response is fetched
+      setIsModalOpen(true); 
     }
   }
   
@@ -62,7 +62,7 @@ function App() {
     setIngredients("");
     setSkinConcerns("");
     setResponse("");
-    setRating(null); // Clear the rating
+    setRating(null); 
     setIsModalOpen(false);
   }
 
@@ -72,9 +72,9 @@ function App() {
         background: `url(${backgroundImage}) repeat-x center center fixed`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        width: "100vw", // Cover the full viewport width
-        minHeight: "100vh", // Cover the full viewport height
-        overflow: "hidden", // Ensure no scrollbars appear if content overflows
+        width: "100vw", 
+        minHeight: "100vh", 
+        overflow: "hidden", 
       }}
     >
       <ThemeProvider theme={theme}>
@@ -118,13 +118,13 @@ function App() {
                   }
                   options={productTypes}
                   sx={{
-                    width: "390px", // Smaller width for product type
+                    width: "390px", 
                     "& .MuiOutlinedInput-root": {
                       "& fieldset": { borderWidth: "3px" },
                       "&:hover fieldset": { borderWidth: "3px" },
                       "&.Mui-focused fieldset": { borderWidth: "3px" },
                     },
-                    margin: "normal", // Ensure same margin as TextField
+                    margin: "normal", 
                   }}
                   freeSolo
                   renderInput={(params) => (
@@ -140,9 +140,9 @@ function App() {
                   fullWidth
                   label="Skin Concerns"
                   variant="outlined"
-                  margin="normal" // Ensure same margin as Autocomplete
+                  margin="normal" 
                   sx={{
-                    width: "390px", // Larger width for skin concerns
+                    width: "390px",
                     "& .MuiOutlinedInput-root": {
                       "& fieldset": { borderWidth: "3px" },
                       "&:hover fieldset": { borderWidth: "3px" },
@@ -161,7 +161,7 @@ function App() {
                 variant="outlined"
                 margin="normal"
                 sx={{
-                  width: "800px", // Same width as the combined length of the product type and skin concerns fields
+                  width: "800px", 
                   "& .MuiOutlinedInput-root": {
                     "& fieldset": { borderWidth: "3px" },
                     "&:hover fieldset": { borderWidth: "3px" },
@@ -224,7 +224,7 @@ function App() {
                 "& .MuiRating-iconFilled": {
                   color: "#D8BFD8",
                 },
-                direction: "rtl", // This reverses the order of the stars
+                direction: "rtl", 
               }}
             />
           </DialogContent>
