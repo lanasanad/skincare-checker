@@ -1,14 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap');
 
 body {
-  background-color: #c5afc5;
+  background-color: #9289db;
 }
 
-.title {
-  font-family: 'Poppins', sans-serif;
-  font-size: 500%;
-  color: #961d59;
-  margin-left: 550px;
-  font-weight: bold;
+.glow-text {
+  text-align: center;
   letter-spacing: 0.4em;
+  font-weight: bold;
+  color: #ffffff;
+ /* text-shadow: 0 0 10px #fefefe, 0 0 20px #dbd6e1, 0 0 30px #dcd9de, 0 0 40px #efefb0, 0 0 50px #eaeaa4, 0 0 60px #eded9e, 0 0 70px #e3ddeb;*/
+  text-shadow: 0 0 10px #f7f4f9, 0 0 20px #eeeaf1, 0 0 30px #e5e1e9, 0 0 40px #e1dbe7, 0 0 50px #e2daeb, 0 0 60px #d9d1e1, 0 0 70px #cec7d4;
+  margin: 0 auto; /* Centering the text */
 }
+
+.analyze-button {
+  background-color: #ceb3ce !important; /* Light purple */
+  color: black !important; /* Assuming you want black text */
+  transition: background-color 0.3s ease !important;
+}
+
+.analyze-button:hover {
+  background-color: #b188b1 !important; /* Darker purple */
+}
+
+
+
