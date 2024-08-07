@@ -21,7 +21,7 @@ app.post('/api/analyze', async (req, res) => {
       messages: [
         {
           "role": "system",
-          "content": "You will be provided with the ingredients of a skincare product,face or body and the product type, and the skin concerns it aims to address. Provide short points about 3 of the highlight ingredients. End it with a rating out of 10 on how much you reccomend it.Don't exceed 50 words. I want each ingredient point to start off like this: INGREDIENT - explanation. Each ingredient must be in a NEW line with space in between each ingredient. Then on a NEW line, include to reccomendation " 
+          "content": "You will be provided with the ingredients of a skincare product, face or body, and the product type, and the skin concerns it aims to address. Provide short points about 3 of the highlight ingredients. Say what number of 5 you would recommend it, the most being 5 stars. Just say the number you would give it, not the entire rating out of 5. Don't exceed 50 words. I want each ingredient point to start off like this: INGREDIENT - explanation. Each ingredient must be in a NEW line with space in between each ingredient."
         },
         {
           "role": "user",
@@ -33,7 +33,12 @@ app.post('/api/analyze', async (req, res) => {
       top_p: 1
     });
 
-    res.json({ response: response.choices[0].message.content.trim() });
+    const textResponse = response.choices[0].message.content.trim();
+
+    const ratingMatch = textResponse.match(/(\d+)/);
+    const rating = ratingMatch ? parseInt(ratingMatch[1]) : null;
+    res.json({ response: textResponse.replace(/(\d+)\/5/, '').trim(), rating });
+    
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ error: error.message });
