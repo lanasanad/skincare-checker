@@ -1,4 +1,3 @@
-
 const express = require('express');
 const cors = require('cors');
 const OpenAI = require("openai");
@@ -13,17 +12,20 @@ const openai = new OpenAI({
 });
 
 app.post('/api/analyze', async (req, res) => {
-    const { ingredients, skinConcerns } = req.body;
+  console.log("Received request:", req.body);
+  try {
+    const { ingredients, skinConcerns, productType } = req.body;
+
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
         {
           "role": "system",
-          "content": "You will be provided with the ingredients of a skincare product and the skin concerns it aims to address. Your task is to provide short bullet points about the most significant ingredients and a final recommendation on whether the product is suitable for the specified skin concerns. do not exceed 60-70 words."
+          "content": "You will be provided with the ingredients of a skincare product, the product type, and the skin concerns it aims to address. Your task is to provide short points about 3 of the highlight ingredients. End it with a rating out of 10 on how much you reccomend it.Don't exceed 50 words. I want each ingredient point to start off like this: INGREDIENT - explanation. Each ingredient must be in a NEW line with space in between each ingredient. Then on a NEW line, include to reccomendation " 
         },
         {
           "role": "user",
-          "content": `Ingredients: ${ingredients}\nSkin Concerns: ${skinConcerns}`
+          "content": `Product Type: ${productType}\nIngredients: ${ingredients}\nSkin Concerns: ${skinConcerns}`
         }
       ],
       temperature: 0.7,
@@ -32,4 +34,11 @@ app.post('/api/analyze', async (req, res) => {
     });
 
     res.json({ response: response.choices[0].message.content.trim() });
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ error: error.message });
+  }
 });
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
