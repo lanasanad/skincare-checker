@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap');
 
 body {
-  background-color: #9289db;
+  background-color: #D8BAA8;
 }
 
 .glow-text {
   text-align: center;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.5em;
   font-weight: bold;
   color: #ffffff;
  /* text-shadow: 0 0 10px #fefefe, 0 0 20px #dbd6e1, 0 0 30px #dcd9de, 0 0 40px #efefb0, 0 0 50px #eaeaa4, 0 0 60px #eded9e, 0 0 70px #e3ddeb;*/
