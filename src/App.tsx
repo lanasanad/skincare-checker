@@ -160,7 +160,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <div>
           <Typography
-            marginTop="74px"
+            marginTop="76px"
             className="red-hat-display"
             gutterBottom
             fontSize="650%"
