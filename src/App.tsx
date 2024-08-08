@@ -67,7 +67,7 @@ function App() {
   }
 
   return (
-    <div
+   <div
       style={{
         background: `url(${backgroundImage}) repeat-x center center fixed`,
         backgroundSize: "cover",
@@ -156,7 +156,7 @@ function App() {
               <TextField
                 fullWidth
                 multiline
-                minRows={8}
+                minRows={7}
                 label="Ingredients"
                 variant="outlined"
                 margin="normal"
@@ -215,14 +215,15 @@ function App() {
               max={5}
               readOnly
               precision={0.5}
-              icon={<StarIcon style={{ color: "#D8BFD8" }} />}
-              emptyIcon={<StarIcon style={{ color: "#C8A2C8" }} />}
+              size="large"
+              icon={<StarIcon style={{ color: "#f1c60877", fontSize: "5rem"}} />}
+              emptyIcon={<StarIcon style={{ color: "#f1c608", fontSize: "5rem"}} />}
               sx={{
                 "& .MuiRating-iconEmpty": {
                   color: "#C8A2C8",
                 },
                 "& .MuiRating-iconFilled": {
-                  color: "#D8BFD8",
+                  color: "#DACDDA",
                 },
                 direction: "rtl", 
               }}
@@ -232,13 +233,13 @@ function App() {
             <Button onClick={() => setIsModalOpen(false)} color="primary">
               Close
             </Button>
-            <Button onClick={handleRefresh} color="primary">
+            <Button onClick={handleRefresh}>
               Refresh
             </Button>
           </DialogActions>
         </Dialog>
       </ThemeProvider>
-    </div>
+   </div>
   );
 }
 
