@@ -83,7 +83,7 @@ function App() {
             marginTop="74px"
             className="glow-text"
             gutterBottom
-            fontSize="649%"
+            fontSize="651%"
             fontFamily="initial"
             sx={{
               display: "flex",
