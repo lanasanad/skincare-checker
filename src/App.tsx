@@ -80,10 +80,10 @@ function App() {
       <ThemeProvider theme={theme}>
         <div>
           <Typography
-            marginTop="75px"
+            marginTop="74px"
             className="glow-text"
             gutterBottom
-            fontSize="650%"
+            fontSize="649%"
             fontFamily="initial"
             sx={{
               display: "flex",
