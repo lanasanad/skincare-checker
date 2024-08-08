@@ -1,14 +1,29 @@
-import React, { useState } from 'react';
-import { TextField, Box, Autocomplete, Button, Typography, Container, CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions, createTheme, Rating, ThemeProvider} from '@mui/material';
-import './App.css';
-import StarIcon from '@mui/icons-material/Star';
-import backgroundImage from './assets/spill1.jpg'; 
+import React, { useState } from "react";
+import {
+  TextField,
+  Box,
+  Autocomplete,
+  Button,
+  Typography,
+  Container,
+  CircularProgress,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  createTheme,
+  Rating,
+  ThemeProvider,
+} from "@mui/material";
+import "./App.css";
+import StarIcon from "@mui/icons-material/Star";
+import backgroundImage from "./assets/spill1.jpg";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#D8BFD8', 
-      dark: '#C8A2C8', 
+      main: "#D8BFD8",
+      dark: "#C8A2C8",
     },
   },
 });
@@ -23,73 +38,139 @@ function App() {
   const [rating, setRating] = useState<number | null>(null);
 
   const productTypes = [
-    "Cleanser", "Cleansing Balm", "Cleansing Oil", "Cream Cleanser", "Face Wash", "Foaming Cleanser", "Gel Cleanser", "Oil Cleanser", "Chemical Exfoliator", "Peel", "Physical Exfoliator / Scrub", "Charcoal Mask", "Clay Mask", "Detox Mask", "Mask", "Mud Mask", "Sheet Mask", "Sleeping Mask", "Under eye Mask", "Face Mist", "Day Cream", "Eye Cream", "Face Cream", "Gel cream", "Hand Cream", "Intensive Moisturizer", "Lip Balm", "Lip Mask", "Lip Oil", "Lip Scrub", 
-    "Face Moisturizer", "Night Cream", "Tinted Moisturizer", "Face Oil", "Squalane", "AHA (Alpha Hydroxy Acid) Serum", "Antioxidant Serum", "Azelaic Acid", "BHA (Beta Hydroxy Acid) Serum", "Brightening Serum", "Collagen Serum", 
-    "Cooling Gel", "Glycolic Acid", "Hyaluronic Acid Serum", "Niacinamide Serum", "Peptide Serum", "PHA (Polyhydroxy Acid) Serum", "Probiotic Serum", "Quercetin Serum", "Retinol", "Rosehip Oil", "Serum",
-    "Vitamin C Serum", "Vitamin E Oil", "Sunscreen", "Acne Spot Treatment", "Pore Minimizer", "Spot Treatment", "Body Butter", "Body Lotion", "Body Oil", "Body Scrub", "Body Moisturizer", "Calamine Lotion", "Makeup Remover", "Micellar Water", "Face Balm", "Toner", "Witch Hazel Toner"
+    "Cleanser",
+    "Cleansing Balm",
+    "Cleansing Oil",
+    "Cream Cleanser",
+    "Face Wash",
+    "Foaming Cleanser",
+    "Gel Cleanser",
+    "Oil Cleanser",
+    "Chemical Exfoliator",
+    "Peel",
+    "Physical Exfoliator / Scrub",
+    "Charcoal Mask",
+    "Clay Mask",
+    "Detox Mask",
+    "Mask",
+    "Mud Mask",
+    "Sheet Mask",
+    "Sleeping Mask",
+    "Under eye Mask",
+    "Face Mist",
+    "Day Cream",
+    "Eye Cream",
+    "Face Cream",
+    "Gel cream",
+    "Hand Cream",
+    "Intensive Moisturizer",
+    "Lip Balm",
+    "Lip Mask",
+    "Lip Oil",
+    "Lip Scrub",
+    "Face Moisturizer",
+    "Night Cream",
+    "Tinted Moisturizer",
+    "Face Oil",
+    "Squalane",
+    "AHA (Alpha Hydroxy Acid) Serum",
+    "Antioxidant Serum",
+    "Azelaic Acid",
+    "BHA (Beta Hydroxy Acid) Serum",
+    "Brightening Serum",
+    "Collagen Serum",
+    "Cooling Gel",
+    "Glycolic Acid",
+    "Hyaluronic Acid Serum",
+    "Niacinamide Serum",
+    "Peptide Serum",
+    "PHA (Polyhydroxy Acid) Serum",
+    "Probiotic Serum",
+    "Quercetin Serum",
+    "Retinol",
+    "Rosehip Oil",
+    "Serum",
+    "Vitamin C Serum",
+    "Vitamin E Oil",
+    "Sunscreen",
+    "Acne Spot Treatment",
+    "Pore Minimizer",
+    "Spot Treatment",
+    "Body Butter",
+    "Body Lotion",
+    "Body Oil",
+    "Body Scrub",
+    "Body Moisturizer",
+    "Calamine Lotion",
+    "Makeup Remover",
+    "Micellar Water",
+    "Face Balm",
+    "Toner",
+    "Witch Hazel Toner",
   ];
 
   async function callBackendAPI() {
     setIsLoading(true);
-  
+
     try {
       const apiResponse = await fetch("http://localhost:5000/api/analyze", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ productType, ingredients, skinConcerns })
+        body: JSON.stringify({ productType, ingredients, skinConcerns }),
       });
-  
+
       if (!apiResponse.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
-  
+
       const data = await apiResponse.json();
       setResponse(data.response);
       setRating(data.rating); // rating from the API response
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
       setResponse("An error occurred while analyzing.");
     } finally {
       setIsLoading(false);
-      setIsModalOpen(true); 
+      setIsModalOpen(true);
     }
   }
-  
+
   function handleRefresh() {
     setProductType(null);
     setIngredients("");
     setSkinConcerns("");
     setResponse("");
-    setRating(null); 
+    setRating(null);
     setIsModalOpen(false);
   }
 
   return (
-   <div
+    <div
       style={{
         background: `url(${backgroundImage}) repeat-x center center fixed`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        width: "100vw", 
-        minHeight: "100vh", 
-        overflow: "hidden", 
+        width: "100vw",
+        minHeight: "100vh",
+        overflow: "hidden",
       }}
     >
       <ThemeProvider theme={theme}>
         <div>
           <Typography
             marginTop="74px"
-            className="glow-text"
+            className="red-hat-display"
             gutterBottom
             fontSize="650%"
-            fontFamily="initial"
             sx={{
+              fontWeight: "400",
               display: "flex",
               justifyContent: "center",
-              fontWeight: "bold",
               textAlign: "center",
+              letterSpacing: '19px', // Adjust the gap between letters
+              wordSpacing: '20px',  // Adjust the gap between words
             }}
           >
             GLOW AI
@@ -118,13 +199,13 @@ function App() {
                   }
                   options={productTypes}
                   sx={{
-                    width: "390px", 
+                    width: "390px",
                     "& .MuiOutlinedInput-root": {
                       "& fieldset": { borderWidth: "3px" },
                       "&:hover fieldset": { borderWidth: "3px" },
                       "&.Mui-focused fieldset": { borderWidth: "3px" },
                     },
-                    margin: "normal", 
+                    margin: "normal",
                   }}
                   freeSolo
                   renderInput={(params) => (
@@ -140,7 +221,7 @@ function App() {
                   fullWidth
                   label="Skin Concerns"
                   variant="outlined"
-                  margin="normal" 
+                  margin="normal"
                   sx={{
                     width: "390px",
                     "& .MuiOutlinedInput-root": {
@@ -161,7 +242,7 @@ function App() {
                 variant="outlined"
                 margin="normal"
                 sx={{
-                  width: "800px", 
+                  width: "800px",
                   "& .MuiOutlinedInput-root": {
                     "& fieldset": { borderWidth: "3px" },
                     "&:hover fieldset": { borderWidth: "3px" },
@@ -216,8 +297,12 @@ function App() {
               readOnly
               precision={0.5}
               size="large"
-              icon={<StarIcon style={{ color: "#f1c60877", fontSize: "4rem"}} />}
-              emptyIcon={<StarIcon style={{ color: "#f1c608", fontSize: "4rem"}} />}
+              icon={
+                <StarIcon style={{ color: "#f1c60877", fontSize: "4rem" }} />
+              }
+              emptyIcon={
+                <StarIcon style={{ color: "#f1c608", fontSize: "4rem" }} />
+              }
               sx={{
                 "& .MuiRating-iconEmpty": {
                   color: "#C8A2C8",
@@ -225,7 +310,7 @@ function App() {
                 "& .MuiRating-iconFilled": {
                   color: "#DACDDA",
                 },
-                direction: "rtl", 
+                direction: "rtl",
               }}
             />
           </DialogContent>
@@ -233,13 +318,11 @@ function App() {
             <Button onClick={() => setIsModalOpen(false)} color="primary">
               Close
             </Button>
-            <Button onClick={handleRefresh}>
-              Refresh
-            </Button>
+            <Button onClick={handleRefresh}>Refresh</Button>
           </DialogActions>
         </Dialog>
       </ThemeProvider>
-   </div>
+    </div>
   );
 }
 
