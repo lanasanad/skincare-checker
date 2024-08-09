@@ -165,7 +165,7 @@ function App() {
             gutterBottom
             fontSize="650%"
             sx={{
-              fontWeight: "400",
+              fontWeight: "600",
               display: "flex",
               justifyContent: "center",
               textAlign: "center",
