@@ -1,0 +1,15 @@
+{
+    "projects": [
+      {
+        "name": "frontend",
+        "root": "app",
+        "buildCommand": "npm run build"
+      },
+      {
+        "name": "backend",
+        "root": "backend",
+        "buildCommand": "npm run start"
+      }
+    ]
+  }
+  
