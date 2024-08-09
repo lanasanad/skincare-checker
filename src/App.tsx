@@ -25,7 +25,7 @@ function App() {
   const productTypes = [
     "Cleanser", "Cleansing Balm", "Cleansing Oil", "Cream Cleanser", "Face Wash", "Foaming Cleanser", "Gel Cleanser", "Oil Cleanser", "Chemical Exfoliator", "Peel", "Physical Exfoliator / Scrub", "Charcoal Mask", "Clay Mask", "Detox Mask", "Mask", "Mud Mask", "Sheet Mask", "Sleeping Mask", "Under eye Mask", "Face Mist", "Day Cream", "Eye Cream", "Face Cream", "Gel cream", "Hand Cream", "Intensive Moisturizer", "Lip Balm", "Lip Mask", "Lip Oil", "Lip Scrub", 
     "Face Moisturizer", "Night Cream", "Tinted Moisturizer", "Face Oil", "Squalane", "AHA (Alpha Hydroxy Acid) Serum", "Antioxidant Serum", "Azelaic Acid", "BHA (Beta Hydroxy Acid) Serum", "Brightening Serum", "Collagen Serum", 
-    "Cooling Gel", "EGF (Epidermal Growth Factor) Serum", "Glycolic Acid", "Hyaluronic Acid Serum", "Niacinamide Serum", "Peptide Serum", "PHA (Polyhydroxy Acid) Serum", "Probiotic Serum", "Quercetin Serum", "Retinol", "Rosehip Oil", "Serum",
+    "Cooling Gel", "Glycolic Acid", "Hyaluronic Acid Serum", "Niacinamide Serum", "Peptide Serum", "PHA (Polyhydroxy Acid) Serum", "Probiotic Serum", "Quercetin Serum", "Retinol", "Rosehip Oil", "Serum",
     "Vitamin C Serum", "Vitamin E Oil", "Sunscreen", "Acne Spot Treatment", "Pore Minimizer", "Spot Treatment", "Body Butter", "Body Lotion", "Body Oil", "Body Scrub", "Body Moisturizer", "Calamine Lotion", "Makeup Remover", "Micellar Water", "Face Balm", "Toner", "Witch Hazel Toner"
   ];
 
@@ -83,7 +83,7 @@ function App() {
             marginTop="74px"
             className="glow-text"
             gutterBottom
-            fontSize="651%"
+            fontSize="650%"
             fontFamily="initial"
             sx={{
               display: "flex",
@@ -216,8 +216,8 @@ function App() {
               readOnly
               precision={0.5}
               size="large"
-              icon={<StarIcon style={{ color: "#f1c60877", fontSize: "5rem"}} />}
-              emptyIcon={<StarIcon style={{ color: "#f1c608", fontSize: "5rem"}} />}
+              icon={<StarIcon style={{ color: "#f1c60877", fontSize: "4rem"}} />}
+              emptyIcon={<StarIcon style={{ color: "#f1c608", fontSize: "4rem"}} />}
               sx={{
                 "& .MuiRating-iconEmpty": {
                   color: "#C8A2C8",
